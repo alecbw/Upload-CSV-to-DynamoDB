@@ -1,0 +1,26 @@
+
+service: serverless-datastores
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: prod
+  region: us-west-1
+  logRetentionInDays: 120
+  versionFunctions: true
+  tags:
+    deployment: serverless.com
+
+resources:
+  Resources:
+    ${env:DYNAMO_TABLE_NAME}:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${env:DYNAMO_TABLE_NAME}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: ${env:DYNAMO_PRIMARY_KEY}
+            AttributeType: S  # String
+        KeySchema:
+          - AttributeName: ${env:DYNAMO_PRIMARY_KEY}
+            KeyType: HASH  # partition key
