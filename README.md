@@ -6,7 +6,7 @@ To come
 Included is a python file for batch uploading to an existing DynamoDB table
 
 ```
-python3CSV_to_Dynamo.py -filename example_file.csv -table exampleTable
+python3 CSV_to_Dynamo.py -filename example_file.csv -table exampleTable
 ```
 
 
